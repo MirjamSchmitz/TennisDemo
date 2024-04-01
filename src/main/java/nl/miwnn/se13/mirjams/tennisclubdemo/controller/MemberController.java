@@ -4,7 +4,10 @@ import nl.miwnn.se13.mirjams.tennisclubdemo.model.Member;
 import nl.miwnn.se13.mirjams.tennisclubdemo.repositories.MemberRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,4 +33,20 @@ public class MemberController {
         return "memberOverview";  // methode geeft de naam van de template terug
     }
 
+    @GetMapping("/member/new")
+    private String showMemberForm(Model model) {
+        model.addAttribute("member", new Member());
+// met new Member weet memberForm nu dat je iets van het type Member meestuurt, die 3 attributen heeft
+//        die je daar verder nu gewoon kunt oproepen.
+        return "memberForm";
+    }
+
+    @PostMapping("/member/new")
+    private String saveMember(@ModelAttribute("member") Member memberToBeSaved, BindingResult result) {
+        if (!result.hasErrors()) {
+            memberRepository.save(memberToBeSaved);
+        }
+
+        return "redirect:/";
+    }
 }

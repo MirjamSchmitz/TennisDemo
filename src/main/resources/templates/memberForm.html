@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new member</title>
+</head>
+<body>
+
+<h1>Create a new member</h1>
+
+<form th:action="@{/member/new}" method="post" th:object="${member}">
+    <table>
+        <tr>
+            <td><label for="nameMemberField">NameMember</label></td>
+            <td><label for="dayOfBirthField">DayOfBirth</label></td>
+            <td><label for="rankingField">Ranking</label></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="nameMemberField" th:field="*{nameMember}" />
+            </td>
+            <td>
+                <input type="text" id="dayOfBirthField" th:field="*{dayOfBirth}" />
+            </td>
+            <td>
+                <input type="text" id="rankingField" th:field="*{ranking}" />
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Save member" />
+</form>
+</body>
+</html>

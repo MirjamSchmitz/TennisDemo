@@ -27,10 +27,10 @@ public class Member {
         this.ranking = ranking;
     }
 
-    public Member(String nameMember, int ranking) {
-        this.nameMember = nameMember;
-        this.ranking = ranking;
-    }
+//    public Member(String nameMember, int ranking) {
+//        this.nameMember = nameMember;
+//        this.ranking = ranking;
+//    }
 
     public Member() {
 
