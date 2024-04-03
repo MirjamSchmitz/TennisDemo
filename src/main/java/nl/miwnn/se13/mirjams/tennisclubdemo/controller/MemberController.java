@@ -30,7 +30,7 @@ public class MemberController {
     @GetMapping("/")
     private String showMemberOverview(Model model){
         model.addAttribute("allMembers", memberRepository.findAll());
-        return "memberOverview";  // methode geeft de naam van de template terug
+        return "memberOverview";  // methode geeft de naam van de memberOverview in de template terug
     }
 
     @GetMapping("/member/new")

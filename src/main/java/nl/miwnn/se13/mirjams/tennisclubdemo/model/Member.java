@@ -18,19 +18,19 @@ public class Member {
     @Id @GeneratedValue
     private Long memberId;
     private String nameMember;
-    private LocalDate dayOfBirth;
+//    private LocalDate dayOfBirth;
     private int ranking;
 
-    public Member(String nameMember, LocalDate dayOfBirth, int ranking) {
-        this.nameMember = nameMember;
-        this.dayOfBirth = dayOfBirth;
-        this.ranking = ranking;
-    }
-
-//    public Member(String nameMember, int ranking) {
+//    public Member(String nameMember, LocalDate dayOfBirth, int ranking) {
 //        this.nameMember = nameMember;
+//        this.dayOfBirth = dayOfBirth;
 //        this.ranking = ranking;
 //    }
+
+    public Member(String nameMember, int ranking) {
+        this.nameMember = nameMember;
+        this.ranking = ranking;
+    }
 
     public Member() {
 
@@ -57,13 +57,6 @@ public class Member {
         this.nameMember = nameMember;
     }
 
-    public LocalDate getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(LocalDate dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
-    }
 
     public int getRanking() {
         return ranking;
