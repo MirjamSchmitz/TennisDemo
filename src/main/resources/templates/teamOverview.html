@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<h1>Overview of all teams</h1>
+<h1>Overview of all teams known in the tennisclub</h1>
 
 <table>
     <tr>
-        <th>Team_name</th>
+        <th>Name of the team</th>
 
     </tr>
     <tr th:each="team : ${allTeams}">
@@ -18,7 +18,7 @@
     </tr>
 <form th:action="@{/team/new}" method="post" th:object="${newTeam}">
     <td><input type="text" th:field="*{teamName}"></td>
-    <td><input type="submit" value="save new team"></td>
+    <td><input type="submit" value="Save new team"></td>
     </tr>
 </form>
 

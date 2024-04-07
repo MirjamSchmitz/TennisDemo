@@ -12,9 +12,10 @@ import jakarta.persistence.ManyToOne;
  **/
 @Entity
 public class TennisRacket {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long racketId;
+
+    private Boolean extraRacket = true;
 
     @ManyToOne //more tennisrackets can belong to a member
     private Member member;
@@ -27,6 +28,13 @@ public class TennisRacket {
         this.racketId = racketId;
     }
 
+    public Boolean getExtraRacket() {
+        return extraRacket;
+    }
+
+    public void setExtraRacket(Boolean extraRacket) {
+        this.extraRacket = extraRacket;
+    }
 
     public Member getMember() {
         return member;

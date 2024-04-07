@@ -16,7 +16,6 @@ public class Member {
     @Id @GeneratedValue
     private Long memberId;
     private String nameMember;
-//    private LocalDate dayOfBirth;
     private int ranking;
 
     @ManyToMany
@@ -25,16 +24,18 @@ public class Member {
     @OneToMany (mappedBy = "member")
     private List<TennisRacket> tennisrackets;
 
+    public int getNumberOfExtraTennisRackets(){
+        int count = 0;
+        for (TennisRacket tennisRacket : tennisrackets){
+            if(tennisRacket.getExtraRacket()){
+                count++;
+            }
+        }
+        return count;
+    }
+
     public int getTotalNumberOfTennisRackets(){
         return tennisrackets.size();
-    }
-
-    public Member(String nameMember, int ranking) {
-        this.nameMember = nameMember;
-        this.ranking = ranking;
-    }
-
-    public Member() {
     }
 
     public Long getMemberId() {
@@ -53,12 +54,19 @@ public class Member {
         this.nameMember = nameMember;
     }
 
-
     public int getRanking() {
         return ranking;
     }
 
     public void setRanking(int ranking) {
         this.ranking = ranking;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
 }

@@ -2,7 +2,6 @@ package nl.miwnn.se13.mirjams.tennisclubdemo.controller;
 
 import nl.miwnn.se13.mirjams.tennisclubdemo.model.Team;
 import nl.miwnn.se13.mirjams.tennisclubdemo.repositories.TeamRepository;
-import nl.miwnn.se13.mirjams.tennisclubdemo.repositories.TennisRacketRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

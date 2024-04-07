@@ -11,14 +11,19 @@
 <table>
     <tr>
         <th>Member</th>
+        <th>ExtraRacket</th>
         <th>Ranking</th>
+        <th>Team</th>
         <th>Total</th>
+        <th>Get extra TennisRacket</th>
     </tr>
     <tr th:each="member : ${allMembers}">
         <td th:text ="${member.nameMember}"></td>
+        <td th:text ="${member.getNumberOfExtraTennisRackets()}"></td>
         <td th:text ="${member.ranking}"></td>
-        <td th:text ="${member.totalNumberOfTennisRackets}"></td>
-        <td><a th:href="@{/tennisracket/new/{memberId}(memberId = ${member.memberId})}">Possess tennisracket(-s)</a></td>
+        <td th:text ="${member.teams}"></td>
+        <td th:text ="${member.getTotalNumberOfTennisRackets()}"></td>
+        <td><a th:href="@{/tennisracket/new/{memberId}(memberId = ${member.memberId})}">Get extra TennisRacket</a></td>
     </tr>
 
 </table>

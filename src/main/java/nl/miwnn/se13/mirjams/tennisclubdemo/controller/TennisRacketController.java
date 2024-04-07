@@ -39,4 +39,4 @@ public class TennisRacketController {
         return "redirect:/";
     }
 
-    }
+}

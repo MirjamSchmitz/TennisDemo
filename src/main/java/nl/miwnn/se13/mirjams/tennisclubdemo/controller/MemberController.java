@@ -2,6 +2,7 @@ package nl.miwnn.se13.mirjams.tennisclubdemo.controller;
 
 import nl.miwnn.se13.mirjams.tennisclubdemo.model.Member;
 import nl.miwnn.se13.mirjams.tennisclubdemo.repositories.MemberRepository;
+import nl.miwnn.se13.mirjams.tennisclubdemo.repositories.TeamRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,22 +23,25 @@ import java.util.List;
 @Controller
 public class MemberController {
     private final MemberRepository memberRepository;
+    private final TeamRepository teamRepository;
 
-    public MemberController(MemberRepository memberRepository) {
+    public MemberController(MemberRepository memberRepository, TeamRepository teamRepository) {
         this.memberRepository = memberRepository;
+        this.teamRepository = teamRepository;
     }
 
     @GetMapping("/")
     private String showMemberOverview(Model model){
         model.addAttribute("allMembers", memberRepository.findAll());
+
         return "memberOverview";  // methode geeft de naam van de memberOverview in de template terug
     }
 
     @GetMapping("/member/new")
     private String showMemberForm(Model model) {
         model.addAttribute("member", new Member());
-// met new Member weet memberForm nu dat je iets van het type Member meestuurt, die 3 attributen heeft
-//        die je daar verder nu gewoon kunt oproepen.
+        model.addAttribute("allTeams", teamRepository.findAll());
+
         return "memberForm";
     }
 

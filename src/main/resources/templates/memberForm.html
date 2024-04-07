@@ -21,6 +21,14 @@
             <td>
                 <input type="text" id="rankingField" th:field="*{ranking}" />
             </td>
+            <td>
+                <select th:field="*{teams}" multiple>
+                    <option th:each="team : ${allTeams}"
+                            th:text="${team.teamName}"
+                            th:value="${team.teamId}">
+                    </option>
+                </select>
+            </td>
         </tr>
     </table>
 
