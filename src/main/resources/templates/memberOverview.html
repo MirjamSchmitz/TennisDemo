@@ -12,10 +12,13 @@
     <tr>
         <th>Member</th>
         <th>Ranking</th>
+        <th>Total</th>
     </tr>
     <tr th:each="member : ${allMembers}">
         <td th:text ="${member.nameMember}"></td>
-        <td th:value ="${member.ranking}"></td>
+        <td th:text ="${member.ranking}"></td>
+        <td th:text ="${member.totalNumberOfTennisRackets}"></td>
+        <td><a th:href="@{/tennisracket/new/{memberId}(memberId = ${member.memberId})}">Possess tennisracket(-s)</a></td>
     </tr>
 
 </table>

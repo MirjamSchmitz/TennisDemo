@@ -5,8 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
-import java.lang.annotation.Inherited;
-
 /**
  * @author Mirjam Schmitz
  * <p>

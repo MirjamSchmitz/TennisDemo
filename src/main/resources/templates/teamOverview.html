@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Overview</title>
+</head>
+<body>
+
+<h1>Overview of all teams</h1>
+
+<table>
+    <tr>
+        <th>Team_name</th>
+
+    </tr>
+    <tr th:each="team : ${allTeams}">
+        <td th:text ="${team.teamName}"></td>
+    </tr>
+<form th:action="@{/team/new}" method="post" th:object="${newTeam}">
+    <td><input type="text" th:field="*{teamName}"></td>
+    <td><input type="submit" value="save new team"></td>
+    </tr>
+</form>
+
+</table>
+</body>
+</html>

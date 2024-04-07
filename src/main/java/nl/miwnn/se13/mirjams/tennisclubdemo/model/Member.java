@@ -1,11 +1,9 @@
 package nl.miwnn.se13.mirjams.tennisclubdemo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Mirjam Schmitz
@@ -21,11 +19,15 @@ public class Member {
 //    private LocalDate dayOfBirth;
     private int ranking;
 
-//    public Member(String nameMember, LocalDate dayOfBirth, int ranking) {
-//        this.nameMember = nameMember;
-//        this.dayOfBirth = dayOfBirth;
-//        this.ranking = ranking;
-//    }
+    @ManyToMany
+    private Set<Team> teams;
+
+    @OneToMany (mappedBy = "member")
+    private List<TennisRacket> tennisrackets;
+
+    public int getTotalNumberOfTennisRackets(){
+        return tennisrackets.size();
+    }
 
     public Member(String nameMember, int ranking) {
         this.nameMember = nameMember;
@@ -34,11 +36,6 @@ public class Member {
 
     public Member() {
     }
-
-//    public int getAge() {
-//        return Period.between(dayOfBirth, LocalDate.now()).getYears();
-//    }
-
 
     public Long getMemberId() {
         return memberId;
