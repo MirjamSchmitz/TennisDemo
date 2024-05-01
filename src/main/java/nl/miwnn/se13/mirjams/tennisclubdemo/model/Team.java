@@ -6,8 +6,8 @@ import jakarta.persistence.Id;
 
 /**
  * @author Mirjam Schmitz
- * <p>
- * Purpose for the class
+ *
+ * Teams contain more than one member. Members can join more teams
  **/
 @Entity
 public class Team {
@@ -33,7 +33,8 @@ public class Team {
         this.teamName = teamName;
     }
 
-//    @Override String toString() {
-//        return teamName;
-//    }
+    @Override
+    public String toString() {
+        return teamName;
+    }
 }

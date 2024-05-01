@@ -12,8 +12,8 @@ import java.util.Optional;
 
 /**
  * @author Mirjam Schmitz
- * <p>
- * Purpose for the class
+ *
+ * Handle all requests regarding tennisrackets
  **/
 
 @Controller
@@ -26,9 +26,9 @@ public class TennisRacketController {
         this.tennisRacketRepository = tennisRacketRepository;
     }
 
-    @GetMapping("/tennisracket/new/{memberId}")
-    private String createNewTennisRacket(@PathVariable("memberId") Long memberId){
-        Optional<Member> optionalMember = memberRepository.findById(memberId);
+    @GetMapping("/tennisracket/new/{nameMember}")
+    private String createNewTennisRacket(@PathVariable("nameMember") String nameMember){
+        Optional<Member> optionalMember = memberRepository.findByNameMember(nameMember);
 
         if(optionalMember.isPresent()){
             TennisRacket tennisRacket = new TennisRacket();

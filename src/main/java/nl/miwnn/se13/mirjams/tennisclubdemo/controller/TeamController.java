@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author Mirjam Schmitz
- * <p>
+ *
  * Describes a team and everything that deals with a team
  **/
 @Controller

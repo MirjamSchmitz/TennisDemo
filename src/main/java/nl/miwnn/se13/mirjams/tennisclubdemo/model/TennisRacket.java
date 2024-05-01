@@ -7,15 +7,15 @@ import jakarta.persistence.ManyToOne;
 
 /**
  * @author Mirjam Schmitz
- * <p>
- * A tennisracket to play tennis with
+ *
+ * A tennisracket that is used by a member or is an extra racket or is in repair.
  **/
 @Entity
 public class TennisRacket {
     @Id @GeneratedValue
     private Long racketId;
 
-    private Boolean extraRacket = true;
+    private Boolean available = true; //racket can be in repair
 
     @ManyToOne //more tennisrackets can belong to a member
     private Member member;
@@ -28,12 +28,12 @@ public class TennisRacket {
         this.racketId = racketId;
     }
 
-    public Boolean getExtraRacket() {
-        return extraRacket;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setExtraRacket(Boolean extraRacket) {
-        this.extraRacket = extraRacket;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public Member getMember() {

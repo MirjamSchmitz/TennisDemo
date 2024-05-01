@@ -34,7 +34,7 @@ public class MemberController {
     private String showMemberOverview(Model model){
         model.addAttribute("allMembers", memberRepository.findAll());
 
-        return "memberOverview";  // methode geeft de naam van de memberOverview in de template terug
+        return "memberOverview";  // methode geeft de naam van de memberOverview (template) terug
     }
 
     @GetMapping("/member/new")
@@ -47,10 +47,12 @@ public class MemberController {
 
     @PostMapping("/member/new")
     private String saveMember(@ModelAttribute("member") Member memberToBeSaved, BindingResult result) {
+       if(memberRepository.findByNameMember(memberToBeSaved.getNameMember()).isPresent()){
+           return "redirect:/member/new";
+       }
         if (!result.hasErrors()) {
             memberRepository.save(memberToBeSaved);
         }
-
         return "redirect:/";
     }
 }

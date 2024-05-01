@@ -13,6 +13,7 @@
         <tr>
             <td><label for="nameMemberField">NameMember</label></td>
             <td><label for="rankingField">Ranking</label></td>
+            <td><label for="teamField">Team</label></td>
         </tr>
         <tr>
             <td>
@@ -22,7 +23,7 @@
                 <input type="text" id="rankingField" th:field="*{ranking}" />
             </td>
             <td>
-                <select th:field="*{teams}" multiple>
+                <select id="teamField" th:field="*{teams}" multiple>
                     <option th:each="team : ${allTeams}"
                             th:text="${team.teamName}"
                             th:value="${team.teamId}">

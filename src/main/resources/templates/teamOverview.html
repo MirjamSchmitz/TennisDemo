@@ -6,21 +6,22 @@
 </head>
 <body>
 
-<h1>Overview of all teams known in the tennisclub</h1>
+<h1>Overview of all teams</h1>
 
 <table>
     <tr>
         <th>Name of the team</th>
-
     </tr>
     <tr th:each="team : ${allTeams}">
         <td th:text ="${team.teamName}"></td>
     </tr>
-<form th:action="@{/team/new}" method="post" th:object="${newTeam}">
-    <td><input type="text" th:field="*{teamName}"></td>
-    <td><input type="submit" value="Save new team"></td>
-    </tr>
-</form>
+
+    <form th:action="@{/team/new}" method="post" th:object="${newTeam}">
+        <tr>
+            <td><input type="text" th:field="*{teamName}"></td>
+            <td><input type="submit" value="Save new team"></td>
+        </tr>
+    </form>
 
 </table>
 </body>

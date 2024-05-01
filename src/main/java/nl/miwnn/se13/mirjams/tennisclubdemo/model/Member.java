@@ -2,12 +2,13 @@ package nl.miwnn.se13.mirjams.tennisclubdemo.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 /**
  * @author Mirjam Schmitz
- * <p>
+ *
  * Shows information about members of a tennisclub.
  **/
 
@@ -15,19 +16,22 @@ import java.util.Set;
 public class Member {
     @Id @GeneratedValue
     private Long memberId;
+
+    @Column(unique = true)
     private String nameMember;
+
     private int ranking;
 
     @ManyToMany
     private Set<Team> teams;
 
     @OneToMany (mappedBy = "member")
-    private List<TennisRacket> tennisrackets;
+    private List<TennisRacket> tennisrackets = new ArrayList<>();
 
-    public int getNumberOfExtraTennisRackets(){
+    public int getNumberOfAvailableRackets(){
         int count = 0;
         for (TennisRacket tennisRacket : tennisrackets){
-            if(tennisRacket.getExtraRacket()){
+            if(tennisRacket.getAvailable()){
                 count++;
             }
         }
