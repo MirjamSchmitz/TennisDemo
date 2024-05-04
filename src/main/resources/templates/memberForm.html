@@ -9,6 +9,7 @@
 <h1>Create a new member</h1>
 
 <form th:action="@{/member/new}" method="post" th:object="${member}">
+    <input type="hidden" th:field="*{memberId}"/>
     <table>
         <tr>
             <td><label for="nameMemberField">NameMember</label></td>

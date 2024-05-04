@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Mirjam Schmitz
@@ -31,7 +33,7 @@ public class MemberController {
     }
 
     @GetMapping("/")
-    private String showMemberOverview(Model model){
+    private String showMemberOverview(Model model) {
         model.addAttribute("allMembers", memberRepository.findAll());
 
         return "memberOverview";  // methode geeft de naam van de memberOverview (template) terug
@@ -47,12 +49,37 @@ public class MemberController {
 
     @PostMapping("/member/new")
     private String saveMember(@ModelAttribute("member") Member memberToBeSaved, BindingResult result) {
-       if(memberRepository.findByNameMember(memberToBeSaved.getNameMember()).isPresent()){
-           return "redirect:/member/new";
-       }
+        if (memberToBeSaved.getMemberId() == null
+                && memberRepository.findByNameMember(memberToBeSaved.getNameMember()).isPresent()) {
+            return "redirect:/member/new";
+        }
         if (!result.hasErrors()) {
             memberRepository.save(memberToBeSaved);
         }
         return "redirect:/";
+    }
+
+    @GetMapping("member/edit/{nameMember}")
+    private String showEditMemberForm(@PathVariable("nameMember") String nameMember, Model model) {
+        Optional<Member> member = memberRepository.findByNameMember(nameMember);
+
+        if (member.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("member", member.get());
+        model.addAttribute("allTeams", teamRepository.findAll());
+
+        return "memberForm";
+    }
+
+    @GetMapping("/member/detail/{nameMember}")
+    private String showMemberDetails(@PathVariable("nameMember") String nameMember, Model model) {
+        Optional<Member> member = memberRepository.findByNameMember(nameMember);
+
+        if(member.isEmpty()){
+            return "redirect:/member";
+        }
+        model.addAttribute("memberToBeShown", member.get());
+        return "memberDetail";
     }
 }

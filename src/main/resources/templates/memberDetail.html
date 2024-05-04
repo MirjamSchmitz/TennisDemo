@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details for member</title>
+</head>
+<body>
+
+    <h1> Detail for member: <span th:text="${memberToBeShown.nameMember}"></span></h1>
+
+    <p th:text="${memberToBeShown.nameMember}">
+    </p>
+
+    <ul>
+        <li th:each="team : ${memberToBeShown.teams}" th:text="${team.teamName}"></li>
+    </ul>
+
+    <table>
+        <tr th:each="tennisRacket : ${memberToBeShown.tennisRackets}">
+        <td th:text="${tennisRacket.racketId}"></td>
+        <td th:if="${tennisRacket.available}">Available</td>
+        <td th:unless="${tennisRacket.available}">Not available</td>
+        </tr>
+    </table>
+
+</body>
+</html>

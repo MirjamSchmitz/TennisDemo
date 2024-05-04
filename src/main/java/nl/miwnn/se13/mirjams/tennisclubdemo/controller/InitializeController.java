@@ -40,10 +40,10 @@ public class InitializeController {
         Team damesDubbel_1 = makeTeam("DD1");
         Team damesEnkel_Dubbel_1 = makeTeam("DED1");
 
-        Member joost = makeMember("Joost Slotemaker", herenDubbel_1);
-        Member vera = makeMember("Vera Linn", damesEnkel_Dubbel_1);
-        Member tamara = makeMember("Tamara Drul", damesDubbel_1);
-        Member koos = makeMember("Koos Boot", gemengdDubbel_2);
+        Member joost = makeMember("Joost Slotemaker", 5, herenDubbel_1);
+        Member vera = makeMember("Vera Linn", 6,damesEnkel_Dubbel_1);
+        Member tamara = makeMember("Tamara Drul", 7,damesDubbel_1);
+        Member koos = makeMember("Koos Boot", 7,gemengdDubbel_2);
 
         makeTennisRacket(joost);
         makeTennisRacket(joost).setAvailable(false);
@@ -61,9 +61,10 @@ public class InitializeController {
         return team;
     }
 
-    private Member makeMember(String nameMember, Team team){
+    private Member makeMember(String nameMember, int ranking, Team team){
         Member member = new Member();
         member.setNameMember(nameMember);
+        member.setRanking(ranking);
 
         Set<Team> teamSet = new HashSet<>();
         teamSet.add(team);

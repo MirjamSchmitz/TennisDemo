@@ -26,11 +26,11 @@ public class Member {
     private Set<Team> teams;
 
     @OneToMany (mappedBy = "member")
-    private List<TennisRacket> tennisrackets = new ArrayList<>();
+    private List<TennisRacket> tennisRackets = new ArrayList<>();
 
     public int getNumberOfAvailableRackets(){
         int count = 0;
-        for (TennisRacket tennisRacket : tennisrackets){
+        for (TennisRacket tennisRacket : tennisRackets){
             if(tennisRacket.getAvailable()){
                 count++;
             }
@@ -39,7 +39,7 @@ public class Member {
     }
 
     public int getTotalNumberOfTennisRackets(){
-        return tennisrackets.size();
+        return tennisRackets.size();
     }
 
     public Long getMemberId() {
@@ -72,5 +72,13 @@ public class Member {
 
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
+    }
+
+    public List<TennisRacket> getTennisRackets() {
+        return tennisRackets;
+    }
+
+    public void setTennisRackets(List<TennisRacket> tennisRackets) {
+        this.tennisRackets = tennisRackets;
     }
 }
